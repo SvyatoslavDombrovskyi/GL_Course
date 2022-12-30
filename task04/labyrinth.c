@@ -17,13 +17,13 @@ int myLabyrinth[SIDE_SIZE][SIDE_SIZE] = {
     {1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1}
 };
 
-// enum Tileset
-// {
-//     passage = 0,
-//     border = 1,
-//     start_end = 2,
-//     path = 3
-// };
+enum Tileset
+{
+    passage = 0,
+    border = 1,
+    start_end = 2,
+    path = 3
+};
 
 void Labyrinth_Print(int labyrinth[SIDE_SIZE][SIDE_SIZE])
 {
@@ -32,21 +32,21 @@ void Labyrinth_Print(int labyrinth[SIDE_SIZE][SIDE_SIZE])
     {
         for (int j = 0; j < SIDE_SIZE; j++)
         {
-            if (labyrinth[i][j] == 1)
+            if (labyrinth[i][j] == border)
             {
                 printf("# ");
             }
-            else if (labyrinth[i][j] == 0)
+            else if (labyrinth[i][j] == passage)
             {
                 printf("  ");
             }
-            else if (labyrinth[i][j] == 2)
+            else if (labyrinth[i][j] == start_end)
             {
                 printf(ANSI_COLOR_GREEN);
                 printf("^ ");
                 printf(ANSI_COLOR_RESET);
             }
-            else if (labyrinth[i][j] == 3)
+            else if (labyrinth[i][j] == path)
             {
                 printf(ANSI_COLOR_RED);
                 printf(". ");
@@ -76,40 +76,40 @@ void Labyrinth_Solve(struct Labyrinth *thisLabyrinth)
 
     recursiveSolve(thisLabyrinth, thisLabyrinth->startX, thisLabyrinth->startY);
 
-    thisLabyrinth->correctPath[thisLabyrinth->startY][thisLabyrinth->startX] = 2;
-    thisLabyrinth->correctPath[thisLabyrinth->endY][thisLabyrinth->endX] = 2;
+    thisLabyrinth->correctPath[thisLabyrinth->startY][thisLabyrinth->startX] = start_end;
+    thisLabyrinth->correctPath[thisLabyrinth->endY][thisLabyrinth->endX] = start_end;
 }
 
 int recursiveSolve(struct Labyrinth *thisLabyrinth, int x, int y)
 {
     if (x == thisLabyrinth->endX && y == thisLabyrinth->endY)
         return 1;
-    if (myLabyrinth[y][x] == 1 || thisLabyrinth->wasHere[y][x])
+    if (myLabyrinth[y][x] == border || thisLabyrinth->wasHere[y][x])
         return 0;
     
     thisLabyrinth->wasHere[y][x] = 1;
     if (x != 0) // left
         if (recursiveSolve(thisLabyrinth, x - 1, y))
         {
-            thisLabyrinth->correctPath[y][x] = 3;
+            thisLabyrinth->correctPath[y][x] = path;
             return 1;
         }
     if (x != SIDE_SIZE - 1) //right
         if (recursiveSolve(thisLabyrinth, x + 1, y))
         {
-            thisLabyrinth->correctPath[y][x] = 3;
+            thisLabyrinth->correctPath[y][x] = path;
             return 1;
         }
     if (y != 0) // top
         if (recursiveSolve(thisLabyrinth, x, y - 1))
         {
-            thisLabyrinth->correctPath[y][x] = 3;
+            thisLabyrinth->correctPath[y][x] = path;
             return 1;
         }
     if (y != SIDE_SIZE - 1) // bottom
         if (recursiveSolve(thisLabyrinth, x, y + 1))
         {
-            thisLabyrinth->correctPath[y][x] = 3;
+            thisLabyrinth->correctPath[y][x] = path;
             return 1;
         }
     return 0;
