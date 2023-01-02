@@ -18,20 +18,20 @@ enum Tileset
 
 enum WayCameFrom
 {
-    top = 1,    // 0001
-    bottom = 2, // 0010
-    left = 4,   // 0100
-    right = 8   // 1000
+    top = 0b0001,    // 1
+    bottom = 0b0010, // 2
+    left = 0b0100,   // 4
+    right = 0b1000   // 8
 };
 
 enum WayDirection
 {
-    top_bottom = 3,
-    left_right = 12,
-    bottom_right = 10,
-    left_bottom = 6,
-    top_left = 5,
-    right_top = 9
+    top_bottom = 0b0011,
+    left_right = 0b1100, 
+    bottom_right = 0b1010,
+    left_bottom = 0b0110,
+    top_left = 0b0101,
+    right_top = 0b1001
 };
 
 void prepareLabyrinthForPrintArrArr(int MazeShab[SIDE_SIZE][SIDE_SIZE],
