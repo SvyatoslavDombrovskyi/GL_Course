@@ -1,0 +1,31 @@
+0000 - 0 - no border
+0001 - 1 - top border 
+0010 - 2 - right border
+0011 - 3
+0100 - 4 - bottom border
+0101 - 5
+0110 - 6
+0111 - 7
+1000 - 8 - left border
+1001 - 9
+1010 - A
+1011 - B
+1100 - C
+1101 - D
+1110 - E
+1111 - F
+
+0x:
+1 - left	|
+1 - bottom	|---> E
+1 - right	|
+0 - top		|
+
+maze:
+
+D52D3
+93C52
+E8512
+96D6A
+C53D6
+
