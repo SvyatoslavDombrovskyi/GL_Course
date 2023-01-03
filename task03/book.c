@@ -15,9 +15,9 @@ void Book_Print(struct Book *book)
 void Book_InitFromConsole(struct Book *book)
 {
     printf("\nTitle: ");
-    scanf("%s", &book->title);
+    gets(book->title);
     printf("Language: ");
-    scanf("%s", &book->language);
+    gets(book->language);
     printf("Price: ");
     scanf("%f", &book->price);
     printf("Number of page: ");
