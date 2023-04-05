@@ -13,8 +13,8 @@ This repository presents the implementation of my course homework in GL Courses.
    - [task06](#)
    - [task07](#)
  * **Pure_C_Training**
-   - [task01](Pure_C_Training\task01\README.md) - Prerequisites
-   - [task02](Pure_C_Training\task02\README.md) - Basic calculations
+   - [task01](Pure_C_Training/task01/README.md) - Prerequisites
+   - [task02](\Pure_C_Training\task02\README.md) - Basic calculations
    - [task03](Pure_C_Training\task03\README.md)- Linked list
    - [task04](Pure_C_Training\task04\README.md) - Maze (Labyrinth)
 
